@@ -1,4 +1,4 @@
-# Novelty screen: PumpSwap event surface and Pump-Gold dataset (2026-10-14)
+# Novelty screen: PumpSwap event surface and Pump-Gold dataset (2026-10-13)
 
 **Disposition:** no new, testable entry edge identified in this pass. This is an outcome-blind source and plan-catalog screen, not an endorsement of the existing strategy. No local market rows, outcomes, holdout, wallet identities, or keys were inspected; no RPC/provider request or capture was made.
 
@@ -15,6 +15,8 @@ The [repository README](https://github.com/Solid-Sea/pump-gold-dataset/blob/mast
 ## Low-confidence lead queued for independent review
 
 A time-varying, cost- and stablecoin-basis-adjusted SOL sell-quote deviation between a fixed-size Jupiter DEX quote and a synchronized CEX reference could act as broad Solana-side exitability stress context for the existing post-migration downside decision. It differs in measurement from static CEX book imbalance, but overlaps the same market-context family; it is not directional alpha or an established edge. RED-ARB v1.1 offers only an adjacent diagnostic: an approximately $100 Jupiter sell quote versus an OKX USDT last-trade price, sampled every 90 seconds, with sequential-request timing. Its quote-impact estimate is not realized slippage, and the raw difference mechanically includes fees, impact, half-spread, and stablecoin basis. It cannot validate the proposed residual, provide a decision-time feed, or establish transfer to PumpSwap graduates. Require exact receipt-time availability, a predeclared stablecoin/cost normalization, controls for SOL return and existing CEX book pressure, and a kill if the residual is redundant or source timing is ambiguous. [RED-ARB v1.1](https://zenodo.org/records/23020971) [correction notes](https://zenodo.org/records/23020971/files/CORRECTIONS_v1.1.md)
+
+**Capture feasibility check (docs checked 2026-10-13):** Jupiter's current Swap V2 `GET /order` permits a quote-only request without `taker` (no transaction is returned); its documented response includes `inAmount`, `outAmount`, and winning `router`, but no quote timestamp or Solana context slot. Requests require an API key. Jupiter lists a no-cost tier at 1 request/second, so one scheduled quote every 90 seconds fits the published rate ceiling without requiring a paid tier. If prospectively approved, store local request-send and response-receive times and treat them as an observation interval, not an exact market timestamp; reject/mark unknown slow responses and compare only with an independently timestamped CEX reference. This makes bounded observation technically feasible, but does not establish quote freshness, synchronized pricing, retention rights, predictive value, or incremental utility. No key was used and no request or capture was made. [Swap V2 Order & Execute docs](https://developers.jup.ag/docs/swap/order-and-execute) [Jupiter pricing](https://developers.jup.ag/pricing)
 
 ## Next gate
 
